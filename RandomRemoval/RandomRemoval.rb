@@ -27,6 +27,8 @@ def RandomRemoval(n)
     newSum = array.inject(:+)
 
     #Output solution
-    puts sum-newSum
+    return sum-newSum
 
 end
+
+puts RandomRemoval(1000)
