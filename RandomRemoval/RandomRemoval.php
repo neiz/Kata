@@ -32,8 +32,6 @@ function RandomRemoval($n) {
     $newSum = array_sum($array);
 
     //Output solution
-    echo $sum."<br/>";
-    echo $newSum."<br/>";
     echo $sum - $newSum;
 }
 ?>
