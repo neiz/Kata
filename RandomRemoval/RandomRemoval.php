@@ -13,41 +13,27 @@ leaves the removed integer.  This executed faster as n got large.
 
 function RandomRemoval($n) {
 
-    if (!$n) {
-        $n = 1000;
-    }
-
     //Initialize array
     $array = array();
-    for ($count = 1; $count <= $n; $count++) {
+    for ($count = 0; $count <= $n; $count++) {
         $array[$count] = $count;
     }
 
+    //Get Initial Count
+    $sum = array_sum($array);
+
     //Randomize
     shuffle($array);
-    print_r($array);
-    //Get Initial Count
-    $sum = 0;
-    $count = 1;
-    while ($count < count($array)) {
-        $sum += $array[$count];
-        $count++;
-    }
 
     //Remove a random integer
-    unset($array[rand(1, count($array))]);
+    unset($array[rand(0, count($array))]);
 
     //Get new sum
-    $newSum = 0;
-    $count = 1;
-    while ($count < count($array)) {
-        $newSum += $array[$count];
-        $count++;
-    }
+    $newSum = array_sum($array);
 
     //Output solution
+    echo $sum."<br/>";
+    echo $newSum."<br/>";
     echo $sum - $newSum;
 }
-
-RandomRemoval(1000)
 ?>
