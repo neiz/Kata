@@ -9,26 +9,18 @@
 # Wrapped in a function for JSLitmus purposes
 
 def RandomRemoval(n) 
-
-    #Initialize array
+		#Initialize array
 	array=*(1..n)
-
-    #Get Initial Count
+		#Get Initial Count
     sum = array.inject(:+)
-
-    #Randomize
+		#Randomize
     array.shuffle
-    
-    #Remove a random integer
-    #array.sample >= 1.9
-    array.delete_at(array.choice)
-	
-    #Get new sum
+		#Remove a random integer
+    array.delete_at(array.sample)
+		#Get new sum
     newSum = array.inject(:+)
-
-    #Output solution
+		#Output solution
     return sum-newSum
-
 end
 
 puts RandomRemoval(1000)
