@@ -10,22 +10,19 @@ leaves the removed integer.  This executed faster as n got large.
 
 // Wrapped in a function for JSLitmus purposes
 
-function RandomRemoval(n) {
+var RandomRemoval = function(n) {
 
     if (!n) {
     var n = 1000;
     }
-
     //Initialize array
     for (var array = [], count = 0; count <= n; count++) {
         array[count] = count;
     }
-
     //Randomize
     array.sort(function randomize() {
         return (Math.round(Math.random()) - 0.5);
     });
-
     //Get Initial Count
     var sum = 0;
     var count = 0;
@@ -33,11 +30,9 @@ function RandomRemoval(n) {
         sum += array[count];
         count++;
     }
-
     //Remove a random integer
     var removalInt = Math.floor(Math.random() * array.length);
     array.splice(removalInt, 1);
-
     //Get new sum
     var newSum = 0;
     var count = 0;
@@ -45,7 +40,6 @@ function RandomRemoval(n) {
         newSum += array[count];
         count++;
     }
-
     //Output solution
     console.log(sum - newSum);
 }

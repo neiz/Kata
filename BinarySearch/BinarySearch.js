@@ -8,7 +8,7 @@ Assumes array is pre-sorted before entering function.
 
 // Iterative implementation
 
-function iterative(haystack, needle) {
+var iterative = function(haystack, needle) {
     //Initialize min/max values
     minValue = 0;
     maxValue = haystack.length - 1;
