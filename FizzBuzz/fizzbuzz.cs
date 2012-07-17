@@ -9,9 +9,9 @@
 
 using System;
 
-namespace fizzbuzz
+namespace Kata
 {
-    class Program
+    class fizzbuzz
     {
         static void Main(string[] args)
         {
