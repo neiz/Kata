@@ -29,7 +29,42 @@ var iterative = function(haystack, needle) {
     //Error
     return -1;
 }
-//var haystack = [0, 1, 4, 5, 6, 7, 8, 9, 12, 26, 45, 67, 78, 90, 98, 123, 211, 234, 456, 769, 865, 2345, 3215, 14345, 24324];
-//var needle = 60;
+var haystack = [0, 1, 4, 5, 6, 7, 8, 9, 12, 26, 45, 67, 78, 90, 98, 123, 211, 234, 456, 769, 865, 2345, 3215, 14345, 24324];
+var needle = 60;
+iterative(haystack, needle);
 
-//iterative(haystack, needle)
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Recursive implementation
+
+var recursive = function (needle, low, high, haystack) {
+
+    //Initialize variables
+    var mid;
+
+    //Loop through low-bound to high-bound
+    while (low < high) {
+        //Get mid-point
+        mid = Math.floor((low + high) / 2);
+        if (needle < haystack[mid])
+        {
+            //Reiterate function with mid=high
+            return recursive(needle, low, mid, haystack);
+        }
+        else if (needle > haystack[mid]) {
+            //Reiterate function with low being middle integer+1
+            return recursive(needle, mid+1, high, haystack);
+        }
+        else
+        {
+            //Success
+            return mid;
+        }
+    }
+    //Failure; should not have reached this point
+    return null;
+}
+
+var haystack = [0, 1, 4, 5, 6, 7, 8, 9, 12, 26, 45, 67, 78, 90, 98, 123, 211, 234, 456, 769, 865, 2345, 3215, 14345, 24324];
+var needle = 60;
+recursive(haystack, needle);
