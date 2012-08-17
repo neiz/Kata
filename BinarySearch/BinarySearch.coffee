@@ -19,5 +19,4 @@ iterative = (needle, haystack) ->
 	else if haystack[mid] > needle then maxValue = mid-1
 	else return mid) while minValue <= maxValue
 
-	return -1
-
+	-1
