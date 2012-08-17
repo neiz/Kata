@@ -23,7 +23,8 @@ var iterative = function (haystack, needle) {
     minValue = 0;                   //Initialize min/max values
     maxValue = haystack.length;
 
-    while (minValue <= maxValue) {
+    while (minValue <= maxValue)
+    {
         i = Math.floor((minValue + maxValue) / 2); //Calculate i as midpoint
         if (haystack[i] < needle) {
             minValue = i + 1;
@@ -31,11 +32,12 @@ var iterative = function (haystack, needle) {
         else if (haystack[i] > needle) {
             maxValue = i - 1;
         }
-        else {
+        else
+        {
             return i; //Found
         }
-        }
-    return -1; //Error
+    }
+    return -1; //Failure
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -56,6 +58,7 @@ var recursive = function (needle, low, high, haystack) {
     {
         mid = Math.floor((low + high) / 2); //Get mid-point
     }
+
         if (needle < haystack[mid])
         {
             return recursive(needle, low, mid - 1, haystack); //Reiterate function with mid=high
