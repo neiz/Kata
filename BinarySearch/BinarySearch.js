@@ -6,15 +6,25 @@ Assumes array is pre-sorted before entering function.
 
 // Wrapped in a function for JSLitmus purposes
 
+
+// TEST CODE:
+
+var haystack = [0, 1, 4, 5, 6, 7, 8, 9, 12, 26, 45, 67, 78, 90, 98, 123, 211, 234, 456, 769, 865, 2345, 3215, 14345, 24324];
+var needle = 211;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // Iterative implementation
 
-var iterative = function(haystack, needle) {
-    //Initialize min/max values
-    minValue = 0;
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+var iterative = function (haystack, needle) {
+
+    minValue = 0;                   //Initialize min/max values
     maxValue = haystack.length;
+
     while (minValue <= maxValue) {
-        //Calculate i as midpoint
-        i = Math.floor((minValue + maxValue) / 2);
+        i = Math.floor((minValue + maxValue) / 2); //Calculate i as midpoint
         if (haystack[i] < needle) {
             minValue = i + 1;
         }
@@ -22,54 +32,41 @@ var iterative = function(haystack, needle) {
             maxValue = i - 1;
         }
         else {
-            //Found
-            return i;
+            return i; //Found
         }
         }
-    //Error
-    return -1;
+    return -1; //Error
 }
-var haystack = [0, 1, 4, 5, 6, 7, 8, 9, 12, 26, 45, 67, 78, 90, 98, 123, 211, 234, 456, 769, 865, 2345, 3215, 14345, 24324];
-var needle = 211;
-iterative(haystack, needle);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Recursive implementation
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 var recursive = function (needle, low, high, haystack) {
 
-    //Initialize variables
-    var mid;
+    var mid; //Initialize mid
 
-    if (high < low) {
-        //Failure, not found
-        return null;
+    if (high < low)
+    {
+        return null; //Failure
     }
     else
     {
-        mid = Math.floor((low + high) / 2);
+        mid = Math.floor((low + high) / 2); //Get mid-point
     }
-    //Loop through low-bound to high-bound
-        //Get mid-point
         if (needle < haystack[mid])
         {
-            //Reiterate function with mid=high
-            return recursive(needle, low, mid-1, haystack);
+            return recursive(needle, low, mid - 1, haystack); //Reiterate function with mid=high
         }
-        else if (needle > haystack[mid]) {
-            //Reiterate function with low being middle integer+1
-            return recursive(needle, mid+1, high, haystack);
+        else if (needle > haystack[mid])
+        {
+            return recursive(needle, mid + 1, high, haystack); //Reiterate itself; manipulate low value
         }
         else
         {
-            //Success
-            return mid;
+            return mid; //Success
         }
-    //Failure; should not have reached this point
-    return null;
+        return null; //Failure
 }
-
-var haystack = [0, 1, 4, 5, 6, 7, 8, 9, 12, 26, 45, 67, 78, 90, 98, 123, 211, 234, 456, 769, 865, 2345, 3215, 14345, 24324];
-var needle = 211;
-recursive(needle, 0, haystack.length, haystack);
