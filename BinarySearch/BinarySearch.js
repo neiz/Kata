@@ -18,7 +18,7 @@ var needle = 211;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-var iterative = function (haystack, needle) {
+var iterative = function (needle, haystack) {
 
     minValue = 0;                   //Initialize min/max values
     maxValue = haystack.length;
@@ -37,7 +37,7 @@ var iterative = function (haystack, needle) {
             return i; //Found
         }
     }
-    return -1; //Failure
+    return null; //Failure
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -46,7 +46,7 @@ var iterative = function (haystack, needle) {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-var recursive = function (needle, low, high, haystack) {
+var recursive = function (needle, haystack, low, high) {
 
     var mid; //Initialize mid
 
@@ -61,11 +61,11 @@ var recursive = function (needle, low, high, haystack) {
 
         if (needle < haystack[mid])
         {
-            return recursive(needle, low, mid - 1, haystack); //Reiterate function with mid=high
+            return recursive(needle, haystack, low, mid - 1); //Reiterate function with mid=high
         }
         else if (needle > haystack[mid])
         {
-            return recursive(needle, mid + 1, high, haystack); //Reiterate itself; manipulate low value
+            return recursive(needle, haystack, mid + 1, high); //Reiterate itself; manipulate low value
         }
         else
         {
