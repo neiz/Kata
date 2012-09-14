@@ -3,6 +3,7 @@
     var Add;
     expect(StringCalc.Add("")).toEqual(0);
 	});
+	check("", 0);
 
 
 	function check(exp, result) {
